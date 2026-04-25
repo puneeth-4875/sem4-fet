@@ -23,13 +23,11 @@
     }
 </style>
 <script>
-    // Alert when page loads
     function showWelcome() {
         alert("Welcome to Puneeth's Portfolio Page!");
     }
     function validateForm() {
-        let name = document.getElementById("name").value;
-
+        let name = document.getElementById("name").value;    
         if (name === "") {
             alert("Name cannot be empty!");
             return false;
@@ -51,12 +49,11 @@ I’m interested in areas like cryptography, steganography, and blockchain conce
 Along with coding, I use design thinking methods to build practical and user-focused solutions.
 </p>
 <a href="https://github.com/puneeth-4875/sem4-fet/">GitHub Repo</a><br>
-<a href="https://puneeth-4875.github.io/sem4-fet/assignment/1.html"></a>
+<a href="https://puneeth-4875.github.io/sem4-fet/assignment/1.html">without css</a>
 <h2>Contact Form</h2>
 <form onsubmit="return validateForm()">
     Name: <input type="text" id="name"><br><br>
     <input type="submit" value="Submit">
 </form>
-
 </body>
 </html>
