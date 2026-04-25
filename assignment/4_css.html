@@ -1,30 +1,71 @@
 <!DOCTYPE html>
-<html lang="en"> 
-  <head> 
-    <meta charset="UTF-8"> 
-    <title>OL and UL</title> 
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>OL and UL</title>
     <title>Skill Matrix</title>
-  </head> 
+   <style>
+        body {
+            background-color: yellow;
+            font-family: "Verdana", sans-serif;
+            padding: 40px;
+        }
+        h1 {
+            color: #2e7d32;
+            text-transform: uppercase;
+            border-bottom: 2px solid #2e7d32;
+            padding-bottom: 10px;
+        }
+        ol > li {
+            margin: 20px 0;
+            font-weight: bold;
+            color: #2e7d32;
+        }
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-top: 10px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+ul li {
+            border: 2px solid #2e7d32;
+            padding: 5px 15px;
+            border-radius: 5px;
+            background-color: #f1f8e9;
+            color: #1b5e20;
+            font-weight: normal;
+            font-size: 0.9rem;
+            display: inline-block;
+            transition: transform 0.2s;
+        }      
+ul li:hover {
+            background-color: #2e7d32;
+            color: yellow;
+            cursor: default ;
+        }      
+    </style>
+  </head>
   <body>
         <h1>My Lists </h1>
-        <ol> 
-          <li>Frontend Development 
-            <ul> 
+        <ol>
+          <li>Frontend Development
+            <ul>
                 <li>HTML</li>
-                <li>CSS</li> 
-                <li>JavaScript</li> 
-            </ul> 
-          </li> 
-          <li>Tools 
-            <ul> 
-                <li>Git</li> 
-                <li>GitHub</li> 
-                <li>VS Code</li> 
-            </ul> 
-          </li> 
+                <li>CSS</li>
+                <li>JavaScript</li>
+            </ul>
+          </li>
+          <li>Tools
+            <ul>
+                <li>Git</li>
+                <li>GitHub</li>
+                <li>VS Code</li>
+            </ul>
+          </li>
         </ol>
-     <a href="https://github.com/puneeth-4875/sem4-fet/assignment/style_css.html"></a>
       <a href="https://github.com/puneeth-4875/sem4-fet/"></a>
  <a href="https://puneeth-4875.github.io/sem4-fet/assignment/4.html">without css</a>
-  </body> 
+  </body>
 </html>
