@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admission Form</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: lavender;
+            margin: 0;
+        }
+
+        .title {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .form-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        form {
+            background: white;
+            padding: 25px 35px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 12px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 6px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        .radio-group {
+            margin-top: 8px;
+        }
+
+        .radio-group input {
+            width: auto;
+            margin-right: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 8px;
+            background: #cd861c;
+            color: white;
+            cursor: pointer;
+        }
+
+        .result {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 class="title">Admission Form</h1>
+
+    <div class="form-container">
+        <form id="admissionForm">
+
+            <label>Name:</label>
+            <input type="text" id="name">
+
+            <label>Phone No:</label>
+            <input type="tel" id="phone">
+
+            <label>Email:</label>
+            <input type="email" id="email">
+
+            <label>Class:</label>
+            <input type="number" id="class">
+
+            <label>Gender:</label>
+            <div class="radio-group">
+                <input type="radio" name="gender" value="Male"> Male
+                <input type="radio" name="gender" value="Female"> Female
+            </div>
+
+            <button type="submit">Submit</button>
+
+        </form>
+    </div>
+
+    <div class="result">
+        <h3 id="status"></h3>
+        <button id="displayBtn" style="display:none;">Display</button>
+        <div id="output"></div>
+    </div>
+
+
+    <script>
+        const form = document.getElementById("admissionForm");
+
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById("name").value;
+            const phone = document.getElementById("phone").value;
+            const email = document.getElementById("email").value;
+            const studentClass = document.getElementById("class").value;
+
+            if (name === "" || phone === "" || email === "" || studentClass === "") {
+                alert("Please fill all fields!");
+                return;
+            }
+
+            alert(
+                "Form Submitted Successfully!\n\n" +
+                "Name: " + name + "\n" +
+                "Phone: " + phone + "\n" +
+                "Email: " + email + "\n" +
+                "Class: " + studentClass
+            );
+        });
+    </script>
+</body>
+</html>
