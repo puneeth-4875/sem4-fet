@@ -1,0 +1,123 @@
+!DOCTYPE html>
+<html>
+<head>
+<title>My Resume</title>
+
+<style>
+body {
+font-family: sans-serif;
+margin: 40px;
+text-align: center;
+background: linear-gradient(135deg, #667eea, #764ba2); /* updated background */
+color: #e6f7ff;
+transition: background 0.8s ease;
+}
+
+h1 {
+color: #66ccff;
+border-bottom: 2px solid #66ccff;
+}
+
+h3, p {
+color: #e6f7ff;
+}
+
+.list-container {
+display: flex;
+justify-content: center;
+}
+
+ul {
+text-align: left;
+list-style-type: square;
+background-color: rgba(0, 0, 0, 0.6);
+padding: 15px 30px;
+border-radius: 10px;
+}
+
+a {
+color: white;
+background-color: #3399ff;
+padding: 8px 12px;
+border-radius: 5px;
+text-decoration: none;
+}
+
+button {
+margin-top: 10px;
+padding: 8px 12px;
+border-radius: 5px;
+border: none;
+background-color: #66ccff;
+color: black;
+cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Puneeth kumar jain</h1>
+
+<h3 id="designation">Computer Science Engineering Student</h3>
+<button onclick="changeDesignation()">Change Designation</button>
+
+<div class="list-container">
+<ul>
+<li>Interested to explore new things.</li>
+<li>Languages known: C, Python.</li>
+</ul>
+</div>
+
+<h3>Education</h3>
+<div class="list-container">
+<ul>
+<li>BE in Computer Science Engineering (Pursuing)</li>
+<li>Completed Computer Course</li>
+<li>12th Grade</li>
+<li>10th Grade</li>
+</ul>
+</div>
+
+<h3>Career Objective</h3>
+<p>
+To secure a position in the field of Computer Science where I can
+apply my knowledge, improve my skills, and contribute to organizational growth.
+</p>
+
+<h3>Strengths</h3>
+<div class="list-container">
+<ul>
+<li>Hardworking</li>
+<li>Good communication skills</li>
+</ul>
+</div>
+
+<h3>Hobbies</h3>
+<div class="list-container">
+<ul>
+<li>Learning new technologies</li>
+<li>Listening to music</li>
+</ul>
+</div>
+
+<p>
+<a href="https://github.com/puneeth-4875/sem4-fet">My Resume</a>
+</p>
+
+<script>
+function changeDesignation() {
+    debugger;
+    let newRole = prompt("Enter new designation:");
+
+    if (newRole) {
+        document.getElementById("designation").innerText = newRole;
+        alert("Designation changed to: " + newRole);
+    } else {
+        alert("No designation entered!");
+    }
+}
+</script>
+
+</body>
+</html>
