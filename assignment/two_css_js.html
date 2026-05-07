@@ -1,106 +1,88 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>OL and UL</title>
-    <title>Skill Matrix</title>
-   <style>
+<html>
+<head>
+    <title>Technical Skills List</title>
+
+    <style>
         body {
-            background-color: rgb;
-            font-family: "Verdana", sans-serif;
-            padding: 40px;
+            background-color: #e0f2fe;
+            font-family: Arial;
+            padding: 20px;
         }
-        h1 {
-            color: #2e7d32;
-            text-transform: uppercase;
-            border-bottom: 2px solid #2e7d32;
-            padding-bottom: 10px;
+
+        input, select, button {
+            margin: 5px;
+            padding: 5px;
         }
-        ol > li {
-            margin: 20px 0;
-            font-weight: bold;
-            color: #2e7d32;
-        }
+
         ul {
-            list-style-type: none;
-            padding-left: 0;
-            margin-top: 10px;
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-ul li {
-            border: 2px solid #2e7d32;
-            padding: 5px 15px;
+            background: white;
+            padding: 10px;
             border-radius: 5px;
-            background-color: #f1f8e9;
-            color: #1b5e20;
-            font-weight: normal;
-            font-size: 0.9rem;
-            display: inline-block;
-            transition: transform 0.2s;
-        }      
-ul li:hover {
-            background-color: #2e7d32;
-            color: yellow;
-            cursor: default ;
-        }      
+        }
     </style>
-  </head>
-  <body>
-        <h1>My Lists </h1>
-        <ol>
-          <li>Frontend Development
-            <ul>
-                <li>HTML</li>
-                <li>CSS</li>
-                <li>JavaScript</li>
-            </ul>
-          </li>
-          <li>Tools
-            <ul>
-                <li>Git</li>
-                <li>GitHub</li>
-                <li>VS Code</li>
-            </ul>
-          </li>
-        </ol>
-      <a href="https://github.com/puneeth-4875/sem4-fet/"></a>
- <a href="https://puneeth-4875.github.io/sem4-fet/assignment/4.html">without css</a>
-   <script>
+</head>
+<body>
+
+<h1>Technical Skills</h1>
+
+<input id="skillInput" placeholder="Enter skill">
+<select id="categorySelect">
+    <option value="prog">Programming Languages</option>
+    <option value="tools">Tools & Technologies</option>
+    <option value="core">Core Computer Science</option>
+</select>
+
+<button onclick="addSkill()">Add</button>
+<button onclick="removeSkill()">Remove</button>
+
+<ol>
+    <li>Programming Languages
+        <ul id="prog"><li>C</li><li>Python</li><li>Java</li></ul>
+    </li>
+    <li>Tools & Technologies
+        <ul id="tools"><li>VS Code</li><li>Git</li><li>Linux</li></ul>
+    </li>
+    <li>Core Computer Science
+        <ul id="core"><li>Programming</li><li>Data Structures</li><li>Algorithms</li></ul>
+    </li>
+</ol>
+
+<script>
+function getList() {
+    debugger; // pauses when this function is called
+    return document.getElementById(categorySelect.value);
+}
 
 function addSkill() {
+    debugger; // pause before adding skill
+    let val = skillInput.value.trim();
+    if (!val) return alert("Enter skill");
 
-    let skill = prompt("Enter a new skill:");
+    let list = getList();
+    for (let li of list.children)
+        if (li.textContent.toLowerCase() === val.toLowerCase())
+            return alert("Already exists");
 
-    if (skill != null && skill.trim() !== "") {
-
-        let list = document.querySelector("ul");
-
-        list.innerHTML += `<li>${skill}</li>`;
-
-        alert("Skill Added");
-    }
+    list.innerHTML += `<li>${val}</li>`;
+    skillInput.value = "";
 }
 
 function removeSkill() {
+    debugger; // pause before removing skill
+    let val = skillInput.value.trim().toLowerCase();
+    let list = getList();
 
-    let skill = prompt("Enter skill name to remove:");
-
-    let items = document.querySelectorAll("ul li");
-
-    items.forEach(function(item) {
-
-        if (item.textContent.toLowerCase() === skill.toLowerCase()) {
-            item.remove();
+    for (let li of list.children) {
+        if (li.textContent.toLowerCase() === val) {
+            li.remove();
+            skillInput.value = "";
+            return;
         }
-
-    });
+    }
+    alert("Not found");
 }
-
-// Double click heading to add skill
-document.querySelector("h1").addEventListener("dblclick", addSkill);
-
 </script>
-  </body>
+
+</body>
 </html>
