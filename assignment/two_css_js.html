@@ -67,36 +67,40 @@ ul li:hover {
         </ol>
       <a href="https://github.com/puneeth-4875/sem4-fet/"></a>
  <a href="https://puneeth-4875.github.io/sem4-fet/assignment/4.html">without css</a>
-    <script>
-function getList() {
-    debugger; // pauses when this function is called
-    return document.getElementById(categorySelect.value);
-}
-function addSkill() {
-    debugger; // pause before adding skill
-    let val = skillInput.value.trim();
-    if (!val) return alert("Enter skill");
-    let list = getList();
-    for (let li of list.children)
-        if (li.textContent.toLowerCase() === val.toLowerCase())
-            return alert("Already exists");
-    list.innerHTML += `<li>${val}</li>`;
-    skillInput.value = "";
-}
-function removeSkill() {
-    debugger; // pause before removing skill
-    let val = skillInput.value.trim().toLowerCase();
-    let list = getList();
+   <script>
 
-    for (let li of list.children) {
-        if (li.textContent.toLowerCase() === val) {
-            li.remove();
-            skillInput.value = "";
-            return;
-        }
+function addSkill() {
+
+    let skill = prompt("Enter a new skill:");
+
+    if (skill != null && skill.trim() !== "") {
+
+        let list = document.querySelector("ul");
+
+        list.innerHTML += `<li>${skill}</li>`;
+
+        alert("Skill Added");
     }
-    alert("Not found");
 }
+
+function removeSkill() {
+
+    let skill = prompt("Enter skill name to remove:");
+
+    let items = document.querySelectorAll("ul li");
+
+    items.forEach(function(item) {
+
+        if (item.textContent.toLowerCase() === skill.toLowerCase()) {
+            item.remove();
+        }
+
+    });
+}
+
+// Double click heading to add skill
+document.querySelector("h1").addEventListener("dblclick", addSkill);
+
 </script>
   </body>
 </html>
