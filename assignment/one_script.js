@@ -21,8 +21,8 @@ subHeading.addEventListener("click", function () {
         if (!isNaN(fontSize) && fontSize > 0) {
             subHeading.style.fontSize = fontSize + "px";
         } else {
-            alert("Invalid size! Default size will be used.");
-            subHeading.style.fontSize = "35px";
+            alert("Invalid size! using default size 45px.");
+            subHeading.style.fontSize = "45px";
         }
 
         subHeading.style.color = "darkblue";
