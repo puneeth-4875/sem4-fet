@@ -67,5 +67,36 @@ ul li:hover {
         </ol>
       <a href="https://github.com/puneeth-4875/sem4-fet/"></a>
  <a href="https://puneeth-4875.github.io/sem4-fet/assignment/4.html">without css</a>
+    <script>
+function getList() {
+    debugger; // pauses when this function is called
+    return document.getElementById(categorySelect.value);
+}
+function addSkill() {
+    debugger; // pause before adding skill
+    let val = skillInput.value.trim();
+    if (!val) return alert("Enter skill");
+    let list = getList();
+    for (let li of list.children)
+        if (li.textContent.toLowerCase() === val.toLowerCase())
+            return alert("Already exists");
+    list.innerHTML += `<li>${val}</li>`;
+    skillInput.value = "";
+}
+function removeSkill() {
+    debugger; // pause before removing skill
+    let val = skillInput.value.trim().toLowerCase();
+    let list = getList();
+
+    for (let li of list.children) {
+        if (li.textContent.toLowerCase() === val) {
+            li.remove();
+            skillInput.value = "";
+            return;
+        }
+    }
+    alert("Not found");
+}
+</script>
   </body>
 </html>
