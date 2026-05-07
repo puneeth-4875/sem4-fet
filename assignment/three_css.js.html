@@ -1,137 +1,142 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Admission Form</title>
-
+    <title>Validated Form</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background: lavender;
-            margin: 0;
-        }
-
-        .title {
-            text-align: center;
-            margin-top: 30px;
+            font-family: Arial;
+            background: #f0f4f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
 
         .form-container {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
-        form {
             background: white;
-            padding: 25px 35px;
-            border-radius: 20px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-            width: 300px;
-        }
-
-        label {
-            font-weight: bold;
-            display: block;
-            margin-top: 12px;
-        }
-
-        input {
-            width: 100%;
-            padding: 10px;
-            margin-top: 6px;
+            padding: 20px;
             border-radius: 8px;
+            width: 320px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0;
             border: 1px solid #ccc;
-        }
-
-        .radio-group {
-            margin-top: 8px;
-        }
-
-        .radio-group input {
-            width: auto;
-            margin-right: 5px;
+            border-radius: 4px;
         }
 
         button {
             width: 100%;
             padding: 10px;
-            margin-top: 15px;
-            border: none;
-            border-radius: 8px;
-            background: #cd861c;
+            background: #0284c7;
             color: white;
+            border: none;
+            border-radius: 4px;
             cursor: pointer;
         }
 
-        .result {
-            text-align: center;
-            margin-top: 20px;
+        button:hover {
+            background: #0369a1;
+        }
+
+        .output {
+            margin-top: 15px;
+            background: #e0f2fe;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
         }
     </style>
 </head>
-
 <body>
 
-    <h1 class="title">Admission Form</h1>
+<div class="form-container">
+    <h2>Contact Form</h2>
+    <form id="myForm">
+        <input type="text" id="name" placeholder="Enter Name">
+        <div class="error" id="nameError"></div>
 
-    <div class="form-container">
-        <form id="admissionForm">
+        <input type="text" id="email" placeholder="Enter Email">
+        <div class="error" id="emailError"></div>
 
-            <label>Name:</label>
-            <input type="text" id="name">
+        <textarea id="message" placeholder="Enter Message"></textarea>
+        <div class="error" id="msgError"></div>
 
-            <label>Phone No:</label>
-            <input type="tel" id="phone">
+        <button type="submit">Submit</button>
+    </form>
 
-            <label>Email:</label>
-            <input type="email" id="email">
+    <div class="output" id="output"></div>
+</div>
 
-            <label>Class:</label>
-            <input type="number" id="class">
+<script>
+document.getElementById("myForm").addEventListener("submit", function(e) {
+    e.preventDefault();
 
-            <label>Gender:</label>
-            <div class="radio-group">
-                <input type="radio" name="gender" value="Male"> Male
-                <input type="radio" name="gender" value="Female"> Female
-            </div>
+    // get values
+    let name = document.getElementById("name").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let message = document.getElementById("message").value.trim();
 
-            <button type="submit">Submit</button>
+    // error elements
+    let nameError = document.getElementById("nameError");
+    let emailError = document.getElementById("emailError");
+    let msgError = document.getElementById("msgError");
 
-        </form>
-    </div>
+    // clear old errors
+    nameError.textContent = "";
+    emailError.textContent = "";
+    msgError.textContent = "";
 
-    <div class="result">
-        <h3 id="status"></h3>
-        <button id="displayBtn" style="display:none;">Display</button>
-        <div id="output"></div>
-    </div>
+    let isValid = true;
 
+    // Name validation (only letters and spaces)
+    let namePattern = /^[A-Za-z ]+$/;
+    if (name === "") {
+        nameError.textContent = "Name is required";
+        isValid = false;
+    } else if (!namePattern.test(name)) {
+        nameError.textContent = "Only letters allowed";
+        isValid = false;
+    }
 
-    <script>
-        const form = document.getElementById("admissionForm");
+    // Email validation
+    let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+    if (email === "") {
+        emailError.textContent = "Email is required";
+        isValid = false;
+    } else if (!emailPattern.test(email)) {
+        emailError.textContent = "Invalid email format";
+        isValid = false;
+    }
 
-        form.addEventListener("submit", function(event) {
-            event.preventDefault();
+    // Message validation
+    if (message.length < 5) {
+        msgError.textContent = "Message must be at least 5 characters";
+        isValid = false;
+    }
 
-            const name = document.getElementById("name").value;
-            const phone = document.getElementById("phone").value;
-            const email = document.getElementById("email").value;
-            const studentClass = document.getElementById("class").value;
+    // If valid, display data
+    if (isValid) {
+        let result = `
+            <strong>Name:</strong> ${name} <br>
+            <strong>Email:</strong> ${email} <br>
+            <strong>Message:</strong> ${message}
+        `;
+        document.getElementById("output").innerHTML = result;
+    }
+});
+</script>
 
-            if (name === "" || phone === "" || email === "" || studentClass === "") {
-                alert("Please fill all fields!");
-                return;
-            }
-
-            alert(
-                "Form Submitted Successfully!\n\n" +
-                "Name: " + name + "\n" +
-                "Phone: " + phone + "\n" +
-                "Email: " + email + "\n" +
-                "Class: " + studentClass
-            );
-        });
-    </script>
 </body>
 </html>
