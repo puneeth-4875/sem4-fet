@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pull Down Menu and List Box</title>
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:Arial, sans-serif;
+    background:grey;
+}
+
+.container{
+    width:400px;
+    padding:30px;
+    background:white;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
+    text-align:center;
+}
+
+h1{
+    color:lightblue;
+    margin-bottom:20px;
+}
+
+h2{
+    color:#333;
+    margin-top:15px;
+    margin-bottom:10px;
+}
+
+select{
+    width:100%;
+    padding:10px;
+    border:none;
+    border-radius:10px;
+    outline:none;
+    background:#f1f1f1;
+    font-size:16px;
+}
+
+select:focus{
+    border:2px solid #243b55;
+}
+
+button{
+    margin-top:15px;
+    padding:10px 20px;
+    border:none;
+    border-radius:10px;
+    background:linear-gradient(135deg,#243b55,#141e30);
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.05);
+}
+p{
+    margin-top:15px;
+    font-size:18px;
+    font-weight:bold;
+    color:#243b55;
+}
+hr{
+    margin:25px 0;
+}
+#homepage{
+    display:inline-block;
+    margin-top:20px;
+    padding:10px 20px;
+    background:#a9abd8;
+    border-radius:20px;
+    text-decoration:none;
+    color:black;
+}
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>JavaScript Menu Demo</h1>
+    <h2>Select Course</h2>
+    <select id="course">
+        <option value="">-- Select Course --</option>
+        <option value="Java">HTML</option>
+        <option value="Python">CSS</option>
+        <option value="JavaScript">JavaScript</option>
+    </select>
+    <p id="courseResult"></p>
+    <hr>
+    <h2>Select Hobby</h2>
+    <select id="hobby" size="4">
+        <option>Reading</option>
+        <option>Gaming</option>
+        <option>Music</option>
+        <option>Traveling</option>
+    </select>
+    <br>
+    <button onclick="showHobby()">Show Hobby</button>
+    <p id="hobbyResult"></p>
+     <a id="homepage"href="https://pratikredekar05.github.io/sem-fet/">Home Page</a>
+</div>
+<script>
+    document.getElementById("course").addEventListener("change", function(){
+        document.getElementById("courseResult").innerHTML ="Selected Course : " + this.value;
+    });
+    function showHobby(){
+
+        let hobby =document.getElementById("hobby").value;
+        document.getElementById("hobbyResult").innerHTML ="Selected Hobby : " + hobby;
+    }
+</script>
+</body>
+</html>
