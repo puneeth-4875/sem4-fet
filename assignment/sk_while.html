@@ -3,8 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Secure Login</title>
-
+<title>Login System</title>
 <style>
 *{
     margin:0;
@@ -81,58 +80,15 @@ button:hover{
 }
 </style>
 </head>
-
 <body>
-
 <div class="container">
-    <h1>🔐 Secure Login</h1>
-
+    <h1>🔐 System Login</h1>
     <h3 id="status">Enter Password</h3>
-
     <input type="password" id="password" placeholder="Enter Password">
-
-    <button onclick="checkPassword()">Login</button>
-
+    <button id="loginBtn">Login</button>
     <p id="attempts">Attempts Left : 3</p>
-
-    <a id="homepage" href="https://pratikredekar05.github.io/sem-fet/">
-        Home Page
-    </a>
+    <a id="homepage"href="https://pratikredekar05.github.io/sem-fet/">Home Page</a>
 </div>
-
-<script>
-let correctPassword = "admin123";
-let attempts = 3;
-
-function checkPassword(){
-
-    let userPassword = document.getElementById("password").value;
-    let status = document.getElementById("status");
-    let attemptsText = document.getElementById("attempts");
-
-    if(userPassword === correctPassword){
-        status.innerHTML = "✅ Login Successful";
-        status.style.color = "green";
-    }
-    else{
-        attempts--;
-
-        if(attempts > 0){
-            status.innerHTML = "❌ Wrong Password";
-            status.style.color = "red";
-            attemptsText.innerHTML = "Attempts Left : " + attempts;
-        }
-        else{
-            status.innerHTML = "⛔ Access Blocked";
-            status.style.color = "darkred";
-
-            attemptsText.innerHTML = "No Attempts Left";
-
-            document.getElementById("password").disabled = true;
-        }
-    }
-}
-</script>
-
+<script src="SK_while.js"></script>
 </body>
 </html>
