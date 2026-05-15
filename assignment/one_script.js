@@ -8,10 +8,8 @@ courseLine.addEventListener("click", function () {
     if (newText !== null && newText.trim() !== "") {
         courseLine.textContent = newText;
 
-        // Ask user for font size input
         let fontSize = prompt("Enter font size (numbers only, e.g. 20, 30, 40):");
 
-        // Convert input to number
         fontSize = Number(fontSize);
 
         if (!isNaN(fontSize) && fontSize > 0) {
