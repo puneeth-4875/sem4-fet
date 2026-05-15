@@ -1,77 +1,119 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Puneeth kumarjain</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Layer Stack Demo</title>
 
-<style>
-.container{
-    position: relative;
-    width: 700px;
-    height: 350px;
-}
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-.profile-box{
-    position: relative;
-    z-index: 3;
-    border: 2px solid black;
-    padding: 20px;
-    background-color: lightyellow;
-}
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background: #f4f4f4;
+      font-family: Verdana, sans-serif;
+    }
 
-.about-box{
-    position: absolute;
-    z-index: 2;
-    background-color: lightgray;
-    width: 60%;
-    padding: 15px;
-    top: 120px;
-    left: 40px;
-}
+    h2 {
+      margin-bottom: 25px;
+      color: #333;
+    }
 
-.skills-box{
-    position: absolute;
-    z-index: 3;
-    background-color: lightgreen;
-    width: 35%;
-    padding: 15px;
-    top: 70px;
-    right: 20px;
-}
-</style>
+    .stage {
+      position: relative;
+      width: 260px;
+      height: 260px;
+    }
 
+    .card {
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      border-radius: 15px;
+      color: white;
+      font-size: 28px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.3s;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .orange {
+      background: orange;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+
+    .purple {
+      background: purple;
+      top: 20px;
+      left: 20px;
+      z-index: 2;
+    }
+
+    .teal {
+      background: teal;
+      top: 40px;
+      left: 40px;
+      z-index: 3;
+    }
+
+    .controls {
+      margin-top: 30px;
+    }
+
+    .controls button {
+      padding: 10px 18px;
+      margin: 5px;
+      border: none;
+      border-radius: 6px;
+      background: #222;
+      color: white;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    .controls button:hover {
+      background: #444;
+    }
+  </style>
 </head>
 
 <body>
 
-<h1>Puneeth kumar jain</h1>
+  <h2>Layer Order Example</h2>
 
-<div class="container">
+  <div class="stage">
+    <div class="card orange" id="card1">Orange</div>
+    <div class="card purple" id="card2">Purple</div>
+    <div class="card teal" id="card3">Teal</div>
+  </div>
 
-    <div class="profile-box">
-        <h2>I am currently studying in MITE</h2>
-        <p>CS Student.</p>
-    </div>
+  <div class="controls">
+    <button onclick="bringFront('card1')">Orange Front</button>
+    <button onclick="bringFront('card2')">Purple Front</button>
+    <button onclick="bringFront('card3')">Teal Front</button>
+  </div>
 
-    <div class="about-box">
-        <p>
-        I mainly work with Java and Python and have a good understanding 
-        of OOP, data structures, and algorithms.
-        I’ve also learned basic web development using HTML.
-        I’m interested in areas like cryptography, steganography, 
-        and blockchain concepts.
-        </p>
-    </div>
+  <script>
+    let highest = 3;
 
-    <div class="skills-box">
-        <p>
-        Along with coding, I use design thinking methods 
-        to build practical and user-focused solutions.
-        </p>
-    </div>
+    function bringFront(elementId) {
+      highest++;
+      document.getElementById(elementId).style.zIndex = highest;
+    }
+  </script>
 
-</div>
-
-<br><br>
-    
 </body>
 </html>
