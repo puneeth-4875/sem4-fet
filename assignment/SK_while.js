@@ -6,7 +6,7 @@ let attempts = 3;
 btn.addEventListener("click", function(){
     while(attempts > 0){
         let password = passwordInput.value;
-        if(password === "@7086"){
+        if(password === "@123"){
             statusText.textContent = "✅ Login Successful!";
             statusText.style.color = "green";
             btn.disabled = true;
