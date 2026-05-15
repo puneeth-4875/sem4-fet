@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Layer Stack Demo</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background: #f4f4f4;
+      font-family: Verdana, sans-serif;
+    }
+
+    h2 {
+      margin-bottom: 25px;
+      color: #333;
+    }
+
+    .stage {
+      position: relative;
+      width: 260px;
+      height: 260px;
+    }
+
+    .card {
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      border-radius: 15px;
+      color: white;
+      font-size: 28px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.3s;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .orange {
+      background: orange;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+
+    .purple {
+      background: purple;
+      top: 20px;
+      left: 20px;
+      z-index: 2;
+    }
+
+    .teal {
+      background: teal;
+      top: 40px;
+      left: 40px;
+      z-index: 3;
+    }
+
+    .controls {
+      margin-top: 30px;
+    }
+
+    .controls button {
+      padding: 10px 18px;
+      margin: 5px;
+      border: none;
+      border-radius: 6px;
+      background: #222;
+      color: white;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    .controls button:hover {
+      background: #444;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2>Layer Order Example</h2>
+
+  <div class="stage">
+    <div class="card orange" id="card1">Orange</div>
+    <div class="card purple" id="card2">Purple</div>
+    <div class="card teal" id="card3">Teal</div>
+  </div>
+
+  <div class="controls">
+    <button onclick="bringFront('card1')">Orange Front</button>
+    <button onclick="bringFront('card2')">Purple Front</button>
+    <button onclick="bringFront('card3')">Teal Front</button>
+  </div>
+
+  <script>
+    let highest = 3;
+
+    function bringFront(elementId) {
+      highest++;
+      document.getElementById(elementId).style.zIndex = highest;
+    }
+  </script>
+
+</body>
+</html>
