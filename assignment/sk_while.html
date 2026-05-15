@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Secure Login</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:Arial, sans-serif;
+    background:linear-gradient(to right,#141e30,#243b55);
+}
+
+.container{
+    width:350px;
+    padding:35px;
+    background:white;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
+}
+
+h1{
+    color:#243b55;
+    margin-bottom:15px;
+}
+
+#status{
+    color:#555;
+    margin-bottom:20px;
+}
+
+input{
+    width:100%;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:10px;
+    margin-bottom:20px;
+    font-size:16px;
+}
+
+button{
+    padding:12px 25px;
+    border:none;
+    border-radius:12px;
+    background:#243b55;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.05);
+}
+
+#attempts{
+    margin-top:15px;
+    color:#444;
+    font-weight:bold;
+}
+
+#homepage{
+    display:inline-block;
+    margin-top:20px;
+    padding:10px 20px;
+    background:#a9abd8;
+    border-radius:20px;
+    text-decoration:none;
+    color:black;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>🔐 Secure Login</h1>
+
+    <h3 id="status">Enter Password</h3>
+
+    <input type="password" id="password" placeholder="Enter Password">
+
+    <button onclick="checkPassword()">Login</button>
+
+    <p id="attempts">Attempts Left : 3</p>
+
+    <a id="homepage" href="https://pratikredekar05.github.io/sem-fet/">
+        Home Page
+    </a>
+</div>
+
+<script>
+let correctPassword = "admin123";
+let attempts = 3;
+
+function checkPassword(){
+
+    let userPassword = document.getElementById("password").value;
+    let status = document.getElementById("status");
+    let attemptsText = document.getElementById("attempts");
+
+    if(userPassword === correctPassword){
+        status.innerHTML = "✅ Login Successful";
+        status.style.color = "green";
+    }
+    else{
+        attempts--;
+
+        if(attempts > 0){
+            status.innerHTML = "❌ Wrong Password";
+            status.style.color = "red";
+            attemptsText.innerHTML = "Attempts Left : " + attempts;
+        }
+        else{
+            status.innerHTML = "⛔ Access Blocked";
+            status.style.color = "darkred";
+
+            attemptsText.innerHTML = "No Attempts Left";
+
+            document.getElementById("password").disabled = true;
+        }
+    }
+}
+</script>
+
+</body>
+</html>
