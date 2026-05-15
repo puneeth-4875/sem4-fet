@@ -1,57 +1,29 @@
-alert("Welcome to Puneeth Kumar Jain's Website!");
+alert("Do you want to change the second line of the website?");
 
-const heading = document.querySelector("h1");
-const subHeading = document.querySelector("h2");
-const paragraph = document.querySelectorAll("p");
+const courseLine = document.getElementById("Student");
 
-// Change second line when clicked
-subHeading.addEventListener("click", function () {
-
+courseLine.addEventListener("click", function () {
     let newText = prompt("Enter new text for the second line:");
 
     if (newText !== null && newText.trim() !== "") {
+        courseLine.textContent = newText;
 
-        subHeading.textContent = newText;
+        // Ask user for font size input
+        let fontSize = prompt("Enter font size (numbers only, e.g. 20, 30, 40):");
 
-        // Ask for font size
-        let fontSize = prompt("Enter font size (only numbers like 20, 30):");
-
+        // Convert input to number
         fontSize = Number(fontSize);
 
         if (!isNaN(fontSize) && fontSize > 0) {
-            subHeading.style.fontSize = fontSize + "px";
+            courseLine.style.fontSize = fontSize + "px";
         } else {
-            alert("Invalid size! using default size 45px.");
-            subHeading.style.fontSize = "45px";
+            alert("Invalid font size. Using default size 45px.");
+            courseLine.style.fontSize = "45px";
         }
 
-        subHeading.style.color = "darkblue";
-        subHeading.style.fontWeight = "bold";
+        courseLine.style.fontWeight = "bold";
 
     } else {
         alert("No changes made.");
     }
-});
-
-// Change background color when main heading is clicked
-heading.addEventListener("click", function () {
-
-    let bgColor = prompt("Enter a background color:");
-
-    if (bgColor !== null && bgColor.trim() !== "") {
-        document.body.style.backgroundColor = bgColor;
-    }
-});
-
-// Change paragraph color on mouse over
-paragraph.forEach(function (para) {
-
-    para.addEventListener("mouseover", function () {
-        para.style.color = "red";
-    });
-
-    para.addEventListener("mouseout", function () {
-        para.style.color = "#333333";
-    });
-
 });
